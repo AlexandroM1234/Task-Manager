@@ -2,6 +2,7 @@ import { Text } from "@chakra-ui/react";
 import React from "react";
 
 interface Props {
+  key: number;
   name: string;
   done: boolean;
 }

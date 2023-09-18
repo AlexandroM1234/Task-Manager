@@ -5,12 +5,12 @@ import TaskCard from "./TaskCard";
 import { useAppSelector } from "../Redux/hooks";
 
 const Tasks: React.FC = () => {
-  const tasks = useAppSelector((state) => state.tasks.tasks);
+  const tasks = useAppSelector((state) => state.tasksReducer.tasks);
   return (
     <div>
       <Text>Tasks</Text>
       {tasks.map((task) => (
-        <TaskCard name={task.name} done={task.done} />
+        <TaskCard key={task.id} name={task.name} done={task.done} />
       ))}
     </div>
   );
