@@ -8,6 +8,8 @@ export interface Task {
 
 export interface TasksState {
   tasks: Task[];
+  inProgressTasks: Task[];
+  completedTasks: Task[];
 }
 
 const initialState: TasksState = {
@@ -18,6 +20,8 @@ const initialState: TasksState = {
       done: false,
     },
   ],
+  inProgressTasks: [],
+  completedTasks: [],
 };
 
 export const tasksSlice = createSlice({
