@@ -1,7 +1,9 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Input } from "@chakra-ui/input";
 import { Button } from "@chakra-ui/button";
+import { useAppDispatch } from "../Redux/hooks";
 import React, { useState } from "react";
+import { Task } from "../Redux/TasksSlice";
 
 type Inputs = {
   name: string;
@@ -10,9 +12,15 @@ type Inputs = {
 const TaskForm: React.FC = () => {
   const [pendingTask, setPendingTask] = useState("");
   const { handleSubmit, register } = useForm<Inputs>();
+  const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<Inputs> = (data): void => {
-    console.log(data.name);
+    const newTask: Task = {
+      id: Date.now(),
+      name: data.name,
+      done: false,
+    };
+    dispatch({ type: "tasks/addTask", payload: newTask });
     setPendingTask("");
   };
 
