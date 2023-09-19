@@ -11,7 +11,6 @@ const TaskCard: React.FC<Props> = ({ name, done }) => {
   return (
     <div>
       <Text>{name}</Text>
-      <Text>{done}</Text>
     </div>
   );
 };
