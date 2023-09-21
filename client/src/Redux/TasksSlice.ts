@@ -24,10 +24,7 @@ export const tasksSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
-    addTask: (
-      state,
-      action: PayloadAction<{ id: number; name: string; done: boolean }>
-    ) => {
+    addTask: (state, action: PayloadAction<Task>) => {
       state.tasks.push(action.payload);
     },
     editTask: (
@@ -37,9 +34,9 @@ export const tasksSlice = createSlice({
       const index = state.tasks.indexOf(action.payload.task);
       state.tasks[index].name = action.payload.newName;
     },
-    deleteTask: (state, action: PayloadAction<{ id: number }>) => {
+    deleteTask: (state, action: PayloadAction<number>) => {
       const updatedTasks = state.tasks.filter(
-        (task) => task.id === action.payload.id
+        (task) => task.id !== action.payload
       );
       state.tasks = updatedTasks;
     },

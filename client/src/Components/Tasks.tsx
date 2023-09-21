@@ -9,7 +9,12 @@ const Tasks: React.FC = () => {
   return (
     <Flex direction={"column"} align={"center"}>
       {tasks.map((task) => (
-        <TaskCard key={task.id} name={task.name} done={task.done} />
+        <TaskCard
+          key={task.id}
+          id={task.id}
+          name={task.name}
+          done={task.done}
+        />
       ))}
     </Flex>
   );
