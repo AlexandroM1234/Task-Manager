@@ -28,11 +28,7 @@ export const tasksSlice = createSlice({
       state,
       action: PayloadAction<{ id: number; name: string; done: boolean }>
     ) => {
-      state.tasks.push({
-        id: action.payload.id,
-        name: action.payload.name,
-        done: action.payload.done,
-      });
+      state.tasks.push(action.payload);
     },
     editTask: (
       state,
