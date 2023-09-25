@@ -22,7 +22,6 @@ const TaskForm: React.FC = () => {
     const newTask: Task = {
       id: Date.now(),
       name: data.name,
-      done: false,
     };
     dispatch({ type: "tasks/addTask", payload: newTask });
     reset({ name: "" });
