@@ -7,6 +7,7 @@ import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 interface Props {
   id: number;
   edit: boolean;
+  name: string;
   setEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -14,14 +15,19 @@ type Inputs = {
   name: string;
 };
 
-const EditTask: React.FC<Props> = ({ id, edit, setEdit }) => {
-  const { handleSubmit, register, reset } = useForm<Inputs>();
-  //   const dispatch = useAppDispatch();
+const EditTask: React.FC<Props> = ({ id, edit, name, setEdit }) => {
+  const { handleSubmit, register, reset } = useForm<Inputs>({
+    defaultValues: { name },
+  });
+  const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<Inputs> = (data): void => {
-    console.log(data.name);
-    // dispatch({ type: "tasks/addTask", payload: newTask });
+    dispatch({
+      type: "tasks/editTask",
+      payload: { newName: data.name, id },
+    });
     reset({ name: "" });
+    setEdit(!edit);
   };
 
   return (
@@ -29,12 +35,7 @@ const EditTask: React.FC<Props> = ({ id, edit, setEdit }) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Flex justifyContent={"space-between"}>
         <Box>
-          <Input
-            width={"100%"}
-            {...register("name")}
-            placeholder="Enter a new task"
-            isRequired
-          />
+          <Input width={"100%"} {...register("name")} isRequired />
         </Box>
 
         <Box>

@@ -11,7 +11,11 @@ type Inputs = {
 };
 
 const TaskForm: React.FC = () => {
-  const { handleSubmit, register, reset } = useForm<Inputs>();
+  const { handleSubmit, register, reset } = useForm<Inputs>({
+    defaultValues: {
+      name: "",
+    },
+  });
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<Inputs> = (data): void => {

@@ -11,13 +11,7 @@ export interface TasksState {
 }
 
 const initialState: TasksState = {
-  tasks: [
-    {
-      id: 1,
-      name: "Finish this app",
-      done: false,
-    },
-  ],
+  tasks: [],
 };
 
 export const tasksSlice = createSlice({
@@ -29,10 +23,12 @@ export const tasksSlice = createSlice({
     },
     editTask: (
       state,
-      action: PayloadAction<{ task: Task; newName: string }>
+      action: PayloadAction<{ newName: string; id: number }>
     ) => {
-      const index = state.tasks.indexOf(action.payload.task);
-      state.tasks[index].name = action.payload.newName;
+      const updateTask = state.tasks.find(
+        (task) => task.id === action.payload.id
+      );
+      updateTask!.name = action.payload.newName;
     },
     deleteTask: (state, action: PayloadAction<number>) => {
       const updatedTasks = state.tasks.filter(

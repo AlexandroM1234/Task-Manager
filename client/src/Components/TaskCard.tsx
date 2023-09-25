@@ -30,7 +30,7 @@ const TaskCard: React.FC<Props> = ({ id, name, done }) => {
       direction={"row"}
     >
       {edit ? (
-        <EditTask id={id} edit={edit} setEdit={setEdit} />
+        <EditTask id={id} edit={edit} name={name} setEdit={setEdit} />
       ) : (
         <Text width={"50%"}>{name}</Text>
       )}
