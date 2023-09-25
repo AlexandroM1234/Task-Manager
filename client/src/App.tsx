@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ChakraProvider, Box, Heading, theme, Flex } from "@chakra-ui/react";
-import { ColorModeSwitcher } from "./ColorModeSwitcher";
+// import { ColorModeSwitcher } from "./ColorModeSwitcher";
 import Tasks from "./Components/Tasks";
 import TaskForm from "./Components/TaskForm";
 

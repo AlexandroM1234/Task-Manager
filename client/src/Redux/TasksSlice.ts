@@ -11,31 +11,33 @@ export interface TasksState {
 }
 
 const initialState: TasksState = {
-  tasks: [
-    {
-      id: 1,
-      name: "Finish this app",
-      done: false,
-    },
-  ],
+  tasks: [],
 };
 
 export const tasksSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
-    addTask: (
+    addTask: (state, action: PayloadAction<Task>) => {
+      state.tasks.push(action.payload);
+    },
+    editTask: (
       state,
-      action: PayloadAction<{ id: number; name: string; done: boolean }>
+      action: PayloadAction<{ newName: string; id: number }>
     ) => {
-      state.tasks.push({
-        id: action.payload.id,
-        name: action.payload.name,
-        done: action.payload.done,
-      });
+      const updateTask = state.tasks.find(
+        (task) => task.id === action.payload.id
+      );
+      updateTask!.name = action.payload.newName;
+    },
+    deleteTask: (state, action: PayloadAction<number>) => {
+      const updatedTasks = state.tasks.filter(
+        (task) => task.id !== action.payload
+      );
+      state.tasks = updatedTasks;
     },
   },
 });
 
-export const { addTask } = tasksSlice.actions;
+export const { addTask, editTask, deleteTask } = tasksSlice.actions;
 export default tasksSlice.reducer;
