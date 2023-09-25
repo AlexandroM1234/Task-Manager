@@ -20,7 +20,7 @@ const TaskCard: React.FC<Props> = ({ id, name }) => {
 
   return (
     <Card
-      width={"50%"}
+      width={["85%", "50%"]}
       padding={4}
       marginY={2}
       variant={"outline"}
@@ -34,7 +34,7 @@ const TaskCard: React.FC<Props> = ({ id, name }) => {
         <Text width={"50%"}>{name}</Text>
       )}
       {!edit ? (
-        <Box>
+        <Box width={"50%"}>
           <Tooltip label="Edit Task">
             <Button onClick={() => setEdit(!edit)} marginX={2}>
               <EditIcon />

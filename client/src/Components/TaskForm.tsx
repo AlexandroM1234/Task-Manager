@@ -30,15 +30,15 @@ const TaskForm: React.FC = () => {
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Flex justifyContent={"center"}>
+      <Flex justifyContent={"center"} marginY={2}>
         <Input
           width={"50%"}
           {...register("name")}
-          placeholder="Enter a new task"
+          placeholder="What do you need to get done today?"
           isRequired
         />
         <Button marginLeft={4} type="submit">
-          Create New Task
+          Add Task
         </Button>
       </Flex>
     </form>

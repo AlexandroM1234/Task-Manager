@@ -6,8 +6,8 @@ import TaskForm from "./Components/TaskForm";
 
 export const App: React.FC = () => (
   <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Flex justifyContent={"center"}>
+    <Box textAlign="center">
+      <Flex marginY={4} justifyContent={"center"}>
         <Heading>Task Manager</Heading>
       </Flex>
       <TaskForm />
