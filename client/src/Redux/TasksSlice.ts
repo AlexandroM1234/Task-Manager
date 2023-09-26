@@ -3,7 +3,6 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 export interface Task {
   id: number;
   name: string;
-  done: boolean;
 }
 
 export interface TasksState {

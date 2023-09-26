@@ -1,4 +1,4 @@
-import { Text, Card, Button, Box } from "@chakra-ui/react";
+import { Text, Card, Button, Box, Tooltip } from "@chakra-ui/react";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { useAppDispatch } from "../Redux/hooks";
 import React, { useEffect, useState } from "react";
@@ -7,10 +7,9 @@ import EditTask from "./EditTask";
 interface Props {
   id: number;
   name: string;
-  done: boolean;
 }
 
-const TaskCard: React.FC<Props> = ({ id, name, done }) => {
+const TaskCard: React.FC<Props> = ({ id, name }) => {
   const dispatch = useAppDispatch();
   const [edit, setEdit] = useState(false);
 
@@ -21,7 +20,7 @@ const TaskCard: React.FC<Props> = ({ id, name, done }) => {
 
   return (
     <Card
-      width={"50%"}
+      width={["85%", "75%", "50%"]}
       padding={4}
       marginY={2}
       variant={"outline"}
@@ -35,13 +34,17 @@ const TaskCard: React.FC<Props> = ({ id, name, done }) => {
         <Text width={"50%"}>{name}</Text>
       )}
       {!edit ? (
-        <Box>
-          <Button onClick={() => setEdit(!edit)} marginX={2}>
-            <EditIcon />
-          </Button>
-          <Button onClick={() => handleDelete(id)} marginX={2}>
-            <DeleteIcon />
-          </Button>
+        <Box width={"50%"}>
+          <Tooltip label="Edit Task">
+            <Button onClick={() => setEdit(!edit)} marginX={2}>
+              <EditIcon />
+            </Button>
+          </Tooltip>
+          <Tooltip label="Delete Task">
+            <Button onClick={() => handleDelete(id)} marginX={2}>
+              <DeleteIcon />
+            </Button>
+          </Tooltip>
         </Box>
       ) : null}
     </Card>

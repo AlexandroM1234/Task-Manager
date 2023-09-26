@@ -1,7 +1,7 @@
 import React from "react";
 import { useAppDispatch } from "../Redux/hooks";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Button, Input, Flex, Box } from "@chakra-ui/react";
+import { Button, Input, Flex, Box, Tooltip, CardBody } from "@chakra-ui/react";
 import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 
 interface Props {
@@ -38,13 +38,17 @@ const EditTask: React.FC<Props> = ({ id, edit, name, setEdit }) => {
           <Input width={"100%"} {...register("name")} isRequired />
         </Box>
 
-        <Box>
-          <Button type="submit" marginX={2}>
-            <CheckIcon />
-          </Button>
-          <Button onClick={() => setEdit(!edit)} marginX={2}>
-            <CloseIcon />
-          </Button>
+        <Box width={["75%", "50%"]}>
+          <Tooltip label="Update Task">
+            <Button type="submit" marginX={2}>
+              <CheckIcon />
+            </Button>
+          </Tooltip>
+          <Tooltip label="Cancel Edit">
+            <Button onClick={() => setEdit(!edit)} marginX={2}>
+              <CloseIcon />
+            </Button>
+          </Tooltip>
         </Box>
       </Flex>
     </form>
