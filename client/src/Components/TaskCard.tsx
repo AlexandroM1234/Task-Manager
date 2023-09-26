@@ -20,7 +20,7 @@ const TaskCard: React.FC<Props> = ({ id, name }) => {
 
   return (
     <Card
-      width={["85%", "50%"]}
+      width={["85%", "75%", "50%"]}
       padding={4}
       marginY={2}
       variant={"outline"}
